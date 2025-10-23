@@ -1,0 +1,42 @@
+﻿<Page x:Class="PhanNgocBaoTramWPF.Views.Pages.ReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Reports">
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- 📊 Bộ lọc thời gian -->
+		<StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Center">
+			<TextBlock Text="Từ ngày:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+			<DatePicker x:Name="dpStart" Width="150" />
+			<TextBlock Text="Đến ngày:" VerticalAlignment="Center" Margin="16,0,8,0"/>
+			<DatePicker x:Name="dpEnd" Width="150"/>
+			<Button Content="Tạo báo cáo" Width="120" Height="30" Margin="16,0,0,0" Click="BtnGenerate_Click"/>
+		</StackPanel>
+
+		<!-- 📈 Thống kê tổng quan -->
+		<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+			<TextBlock x:Name="txtTotalBookings" FontWeight="Bold" Margin="0,0,20,0"/>
+			<TextBlock x:Name="txtTotalRevenue" FontWeight="Bold" Margin="0,0,20,0"/>
+			<TextBlock x:Name="txtAverageRevenue" FontWeight="Bold"/>
+		</StackPanel>
+
+		<!-- 📋 Bảng báo cáo chi tiết -->
+		<DataGrid Grid.Row="2" x:Name="dgReport" AutoGenerateColumns="False" IsReadOnly="True"
+				  HeadersVisibility="Column" RowHeight="30" AlternatingRowBackground="#FFF8F8F8">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ID" Binding="{Binding BookingID}" Width="60"/>
+				<DataGridTextColumn Header="Khách hàng" Binding="{Binding CustomerName}" Width="200"/>
+				<DataGridTextColumn Header="Phòng" Binding="{Binding RoomNumber}" Width="100"/>
+				<DataGridTextColumn Header="Từ ngày" Binding="{Binding StartDate, StringFormat=d}" Width="120"/>
+				<DataGridTextColumn Header="Đến ngày" Binding="{Binding EndDate, StringFormat=d}" Width="120"/>
+				<DataGridTextColumn Header="Số ngày" Binding="{Binding Days}" Width="80"/>
+				<DataGridTextColumn Header="Tổng tiền" Binding="{Binding TotalPrice, StringFormat=C0}" Width="150"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</Page>

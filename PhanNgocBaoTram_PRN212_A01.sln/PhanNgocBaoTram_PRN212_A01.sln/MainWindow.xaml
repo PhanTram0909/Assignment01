@@ -1,0 +1,19 @@
+﻿<Window x:Class="PhanNgocBaoTramWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MiniHotel System" Height="700" Width="1200">
+    <Grid>
+        <DockPanel>
+            <!-- Thanh menu trái -->
+            <StackPanel DockPanel.Dock="Left" Width="200" Background="#F0F0F0">
+                <Button Content="Customer" Click="BtnCustomers_Click" Margin="10"/>
+                <Button Content="Room" Click="BtnRooms_Click" Margin="10"/>
+                <Button Content="Booking" Click="BtnBookings_Click" Margin="10"/>
+                <Button Content="Report" Click="BtnReports_Click" Margin="10"/>
+            </StackPanel>
+
+            <!-- Frame hiển thị nội dung trang -->
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </DockPanel>
+    </Grid>
+</Window>
